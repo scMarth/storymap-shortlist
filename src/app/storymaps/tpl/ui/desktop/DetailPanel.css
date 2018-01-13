@@ -27,7 +27,7 @@
 .detailView {
 	opacity: 1;
 	width: inherit;
-	background-color: white;
+	background-color: #a3bcdd;
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
@@ -179,16 +179,18 @@
 }
 
 .detailPictureDiv {
-	margin-bottom: -5px;
+	width: 100% !important;
+	height: auto;
+	/*margin-bottom: -5px;*/
 	min-height: 100px;
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 	/*text-align: left;*/
 	text-align: center;
 	/*position: fixed;*/
 }
 
 .detailPictureDiv img{
-	width: auto;
+	width: 100%;
 	height: auto;
 	margin: auto;
 	cursor: pointer;
@@ -201,6 +203,8 @@
 	overflow-y: auto;
 	position: absolute !important;
 	width: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
 }
 
 .shortDesc{
@@ -218,8 +222,8 @@
 	color: #000;
 	font-size: 14px;
 	text-align: left;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 0;
+	padding-right: 0;
 	padding-bottom: 15px;
 	font-weight: normal;
 	margin-top: 20px;
@@ -229,6 +233,7 @@
 
 .detailFeatureDesc p {
   margin-top: 10px;
+  border-radius: 0 !important;
 }
 
 .detailFeatureDesc a{

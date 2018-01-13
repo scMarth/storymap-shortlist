@@ -228,7 +228,7 @@ define(["esri/geometry/screenUtils",
 			this.destroySortable = function()
 			{
 				$('#myList').sortable('destroy');
-				$('#myList').css('background-color', '#C7C7C7');
+				$('#myList').css('background-color', '#a3bcdd');
 				$('body').removeClass('organizeFeatures');
 				$('#myList').removeClass('organize');
 			};

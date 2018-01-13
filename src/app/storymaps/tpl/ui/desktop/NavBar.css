@@ -12,6 +12,7 @@
 
 .nav-bar.isTab {
 	/*height: 40px;*/
+	background-color: transparent;
 }
 
 .nav-bar .entries,
