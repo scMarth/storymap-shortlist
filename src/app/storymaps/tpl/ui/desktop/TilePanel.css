@@ -77,25 +77,28 @@ ul.tilelist {
 	/* initial width -- will be re-calculated in app */
 	width: 495px;
 	padding-left: 40px;
-	padding-right: 40px;
+	padding-right: 0;
+	height: 100%;
 	padding-bottom: 0;
 	display: inline-block;
 	overflow: auto;
 	position: absolute;
 	top: 18px;
 	left: 0;
-	margin: 5px;
+	/*margin: 5px;*/
 	/*box-shadow: 4px 4px 2px #535456;*/
 	font-size: 11.5px;
 	font-weight: bold;
 }
 
+/*
 #myList{
 	margin: 0 !important;
 	padding: 0 !important;
 	width: 100%;
 	height: 100%;
 }
+*/
 
 ul.tilelist li {
 	list-style-type: none;

@@ -30,7 +30,7 @@ define(["esri/geometry/screenUtils",
 			this.resize = function(newWidth)
 			{
 				$("#paneLeft").width(newWidth);
-				$(".tilelist").width(newWidth);
+				$(".tilelist").width(newWidth - 40); // subtract the width of the padding on the left of tilelist
 			};
 
 			this.createTab = function(index, layer){

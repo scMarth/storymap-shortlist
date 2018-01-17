@@ -1933,8 +1933,8 @@ define(["lib-build/css!./MainView",
 
 					if(cfg.width <= app.cfg.TWO_COLUMN_THRESHOLD || (cfg.width <= 1024 && cfg.height <= 768)){
 						setTimeout(function(){
-							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN + 16));
-							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN + 16));
+							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN));
+							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN));
 							if(app.map)
 								app.map.resize();
 							if(_this.selected && !app.map.extent.contains(_this.selected.geometry) && app.mapTips)
@@ -1950,8 +1950,8 @@ define(["lib-build/css!./MainView",
 					}
 					else if(cfg.width <= app.cfg.THREE_COLUMN_THRESHOLD && cfg.width >= app.cfg.TWO_COLUMN_THRESHOLD){
 						setTimeout(function(){
-							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN + 16));
-							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN + 16));
+							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN));
+							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN));
 							if(app.map)
 								app.map.resize();
 						}, 0);
@@ -1965,8 +1965,8 @@ define(["lib-build/css!./MainView",
 					}
 					else{
 						setTimeout(function(){
-							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN + 16));
-							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN + 16));
+							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN));
+							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN));
 							if(app.map)
 								app.map.resize();
 						}, 0);
