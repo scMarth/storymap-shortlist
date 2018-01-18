@@ -1939,6 +1939,7 @@ define(["lib-build/css!./MainView",
 
 							// adjust margin of #myList inside #paneLeft
 							app.cfg.MYLIST_MARGIN = ((app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN - 206)/2); // tiles are 206 width
+							app.ui.tilePanel.resize(app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN);
 
 							if(app.map)
 								app.map.resize();
@@ -1961,6 +1962,7 @@ define(["lib-build/css!./MainView",
 
 							// adjust margin of #myList inside #paneLeft
 							app.cfg.MYLIST_MARGIN = ((app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN - (206*2))/2); // tiles are 206 width
+							app.ui.tilePanel.resize(app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN);
 
 							if(app.map)
 								app.map.resize();
@@ -1981,6 +1983,7 @@ define(["lib-build/css!./MainView",
 
 							// adjust margin of #myList inside #paneLeft
 							app.cfg.MYLIST_MARGIN = ((app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN - (206*3))/2); // tiles are 206 width
+							app.ui.tilePanel.resize(app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN);
 
 							if(app.map)
 								app.map.resize();

@@ -40,6 +40,12 @@ which
 which.cmd
 
 #################
+## misc
+#################
+
+grepresult
+
+#################
 
 deploy/
 node_modules/
