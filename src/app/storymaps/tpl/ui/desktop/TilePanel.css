@@ -48,11 +48,10 @@
 	height: 100%;
 	overflow: hidden;
 	background-color: #a3bcdd;
-	padding: 8px;
 	/*border-top-width: 10px;
 	border-top-style: solid;*/
 	display: block;
-	padding: 0 !important;  /* causes white bar on side, bit too small */
+	padding: 0 !important;
 }
 
 #paneLeft .noFeature{
@@ -76,19 +75,21 @@
 ul.tilelist {
 	/* initial width -- will be re-calculated in app */
 	width: 495px;
-	padding-left: 40px;
-	padding-right: 0;
-	height: 100%;
+/*	padding-left: 40px;
+	padding-right: 40px;*/
+	padding: 0;
+	/*height: 100%;*/
 	padding-bottom: 0;
 	display: inline-block;
 	overflow: auto;
 	position: absolute;
-	top: 18px;
+	top: 0;
 	left: 0;
 	/*margin: 5px;*/
 	/*box-shadow: 4px 4px 2px #535456;*/
 	font-size: 11.5px;
 	font-weight: bold;
+	
 }
 
 /*

@@ -1924,17 +1924,22 @@ define(["lib-build/css!./MainView",
 						$('#header').height(headerHeight);
 					}
 					$(".tilelist").height($("#paneLeft").height() - ((app.isInBuilder && !app.data.getWebAppData().getIsExternalData()) ? 70 : 48));
-					$(".tilelist").css('top', app.isInBuilder && !app.data.getWebAppData().getIsExternalData() ? 50 : 28);
+					$(".tilelist").css('top', app.isInBuilder && !app.data.getWebAppData().getIsExternalData() ? 50 : 0);
 					$("#paneLeft .noFeature").width($('#paneLeft').width());
 					$("#paneLeft").width() == app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN ? $('#paneLeft .noFeatureText').css('margin-left', '20px') : $('#paneLeft .noFeatureText').css('margin-left', '100px');
 					$("#map").height(cfg.height - 10);
 					$("#map").css('top', 0);
 					app.ui.navBar.resize();
 
+					// paneLeft has 1 column
 					if(cfg.width <= app.cfg.TWO_COLUMN_THRESHOLD || (cfg.width <= 1024 && cfg.height <= 768)){
 						setTimeout(function(){
 							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN));
 							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN));
+
+							// adjust margin of #myList inside #paneLeft
+							app.cfg.MYLIST_MARGIN = ((app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN - 206)/2); // tiles are 206 width
+
 							if(app.map)
 								app.map.resize();
 							if(_this.selected && !app.map.extent.contains(_this.selected.geometry) && app.mapTips)
@@ -1948,10 +1953,15 @@ define(["lib-build/css!./MainView",
 							app.ui.detailPanel.resize();
 						}
 					}
-					else if(cfg.width <= app.cfg.THREE_COLUMN_THRESHOLD && cfg.width >= app.cfg.TWO_COLUMN_THRESHOLD){
+					// paneLeft has 2 columns
+					else if(cfg.width <= app.cfg.THREE_COLUMN_THRESHOLD && cfg.width > app.cfg.TWO_COLUMN_THRESHOLD){
 						setTimeout(function(){
 							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN));
 							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN));
+
+							// adjust margin of #myList inside #paneLeft
+							app.cfg.MYLIST_MARGIN = ((app.cfg.LEFT_PANE_WIDTH_THREE_COLUMN - (206*2))/2); // tiles are 206 width
+
 							if(app.map)
 								app.map.resize();
 						}, 0);
@@ -1963,10 +1973,15 @@ define(["lib-build/css!./MainView",
 							app.ui.detailPanel.resize();
 						}
 					}
+					// paneLeft has 3 columns
 					else{
 						setTimeout(function(){
 							$("#mainStagePanel").width(cfg.width - (app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN));
 							$("#mainStagePanel").css("left", (app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN));
+
+							// adjust margin of #myList inside #paneLeft
+							app.cfg.MYLIST_MARGIN = ((app.cfg.LEFT_PANE_WIDTH_FOUR_COLUMN - (206*3))/2); // tiles are 206 width
+
 							if(app.map)
 								app.map.resize();
 						}, 0);

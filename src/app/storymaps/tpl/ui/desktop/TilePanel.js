@@ -3,8 +3,9 @@ define(["esri/geometry/screenUtils",
 		"storymaps/common/utils/CommonHelper",
 		"lib-build/tpl!./TilePanel",
 		"lib-build/css!./TilePanel",
+		"../../../../config",
 		"../../core/WebApplicationData"],
-	function(screenUtils, Helper, CommonHelper, tilePanel){
+	function(screenUtils, Helper, CommonHelper, tilePanel, config){
 		return function TilePanel(container, mainView, WebApplicationData)
 		{
 			var _this = this;
@@ -30,7 +31,9 @@ define(["esri/geometry/screenUtils",
 			this.resize = function(newWidth)
 			{
 				$("#paneLeft").width(newWidth);
-				$(".tilelist").width(newWidth - 40); // subtract the width of the padding on the left of tilelist
+				$(".tilelist").width(newWidth - (app.cfg.MYLIST_MARGIN*2));
+				$(".tilelist").css('padding-left', app.cfg.MYLIST_MARGIN);
+				$(".tilelist").css('padding-right', app.cfg.MYLIST_MARGIN);
 			};
 
 			this.createTab = function(index, layer){
