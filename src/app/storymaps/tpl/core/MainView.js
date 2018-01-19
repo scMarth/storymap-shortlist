@@ -1904,9 +1904,7 @@ define(["lib-build/css!./MainView",
 					$("#mobileBookmarksCon").hide();
 
 					if(app.data.getStory()[themeIndex] && app.data.getStory()[themeIndex].color){
-						$('#contentPanel').css({'border-top-width': '10px',
-												'border-top-style': 'solid',
-												'border-top-color': app.data.getStory()[themeIndex].color});
+						$('#contentPanel').css('border-top', '0');
 						$('.detailHeader').css('border-top', '0px');
 						$('.notNumbered').css('margin-top', '20px');
 					}
@@ -1927,7 +1925,7 @@ define(["lib-build/css!./MainView",
 					$(".tilelist").css('top', app.isInBuilder && !app.data.getWebAppData().getIsExternalData() ? 50 : 0);
 					$("#paneLeft .noFeature").width($('#paneLeft').width());
 					$("#paneLeft").width() == app.cfg.LEFT_PANE_WIDTH_TWO_COLUMN ? $('#paneLeft .noFeatureText').css('margin-left', '20px') : $('#paneLeft .noFeatureText').css('margin-left', '100px');
-					$("#map").height(cfg.height - 10);
+					$("#map").height(cfg.height);
 					$("#map").css('top', 0);
 					app.ui.navBar.resize();
 
