@@ -1916,7 +1916,7 @@ define(["lib-build/css!./MainView",
 						heightAroundMap += itemObj.is(':visible') ? itemObj.outerHeight() : 0;
 					});
 					$("#contentPanel").height(heightViewport - heightAroundMap + 10);
-					$("#paneLeft").height($("#contentPanel").height() - $('#tabs').height() - 20);
+					$("#paneLeft").height($("#contentPanel").height() - $('#tabs').height());
 					if(!_urlParams.embed && _urlParams.embed !== '' && !app.cfg.embed && !_urlParams.forceEmbed && !app.indexCfg.forceEmbed){
 						var headerHeight = app.data.getWebAppData().getHeader().compactSize ? '60px' : '110px';
 						$('#header').height(headerHeight);

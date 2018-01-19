@@ -31,8 +31,7 @@ define(["esri/geometry/screenUtils",
 			this.resize = function(newWidth)
 			{
 				$("#paneLeft").width(newWidth);
-
-				$(".tilelist").width(newWidth - (app.cfg.MYLIST_MARGIN)); // subtract space for the left-padding
+				$(".tilelist").width(newWidth - (app.cfg.MYLIST_MARGIN));
 				$(".tilelist").css('padding-left', app.cfg.MYLIST_MARGIN);
 			};
 

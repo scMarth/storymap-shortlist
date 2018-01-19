@@ -45,7 +45,7 @@
 #paneLeft {
 	/* initial width -- will be re-calculated in app */
 	width: 520px;
-	height: 100% !important;
+	height: 100%;
 	overflow: hidden;
 	background-color: #a3bcdd;
 	/*border-top-width: 10px;
