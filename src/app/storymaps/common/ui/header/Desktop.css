@@ -6,7 +6,7 @@
 
 	margin: 0;
 	overflow: hidden;
-  background-image: url(//giswebservices.ci.salinas.ca.us/storymaps/trafficcalmingprojects/app/banner/TrafficCalmingBanner4.png);
+  background-image: url(../../../../../resources/images/TrafficCalmingBanner4.png);
   background-position: left; background-repeat: no-repeat; /*height: 115px;*/
 }
 
