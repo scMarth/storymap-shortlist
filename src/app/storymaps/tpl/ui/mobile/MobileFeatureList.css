@@ -8,7 +8,7 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: 100%;
-	background-color:#fff;
+	background-color: rgb(163, 188, 221);
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -112,7 +112,7 @@ ul.mobileTileList .blurb {
 	width: 100%;
 	top: 48%;
 	height: 40px;
-	background-color: rgb(68, 68, 68);
+	background-color: rgb(34, 76, 91) !important;
 	position: absolute;
 	color: #FFF;
 }

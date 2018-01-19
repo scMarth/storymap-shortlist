@@ -33,7 +33,13 @@ body.mobile-view .detailContainer{
 }
 
 body.mobile-view .detailHeader{
-	border-top: 10px solid;
+	border-top: 0 !important;
+	background-color: rgb(34, 76, 91) !important;
+	margin-bottom: 0 !important;
+}
+
+body.mobile-view .detailTextContainer{
+	padding-top: 20px !important;
 }
 
 body.mobile-view .notNumbered{
