@@ -251,7 +251,7 @@
 
 .detailFeatureDesc p {
   margin-top: 10px;
-  border-radius: 0 !important;
+  /*border-radius: 0 !important;*/
   border: none !important;
   padding: 10px !important;
 }
