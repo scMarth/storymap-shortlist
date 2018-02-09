@@ -96,12 +96,6 @@
 	background-color: #5F788B;
 }
 
-/* Override Border Radius in Tabs*/
-
-.nav-bar .nav-tabs > li > a {
-	border-radius: 0 0 0 0 !important;
-}
-
 
 /* Active entry and hover */
 
