@@ -166,7 +166,7 @@ ul.tilelist .footer {
 	top: 150px;
 	width: 100%;
 	margin: 0 !important;
-
+	padding-left: 14px;
 	height: 50px;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -183,6 +183,7 @@ ul.tilelist .num {
 	float: left;
 	border: solid;
 	border-width: thin;
+	display: block;
 	color: white;
 	font-size: 11px;
 	text-align: center;
@@ -195,10 +196,9 @@ ul.tilelist .longNum {
 }
 
 ul.tilelist .blurb {
-	width: 116px;
+	width: 148px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	word-wrap: break-word;
@@ -206,6 +206,7 @@ ul.tilelist .blurb {
 	margin-left: 4px;
 	text-align: left;
 	font-family: 'open_sansregular', sans-serif;
+	font-size: 14px;
 }
 
 .unNumBlurb {

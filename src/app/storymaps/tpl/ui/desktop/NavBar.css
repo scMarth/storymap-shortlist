@@ -50,6 +50,10 @@
 	margin-left: 0;
 }
 
+.nav-bar.isTab .entry.visible.active .entryLbl{
+	background-color: #a3bcdd !important;
+}
+
 .nav-bar .nav-tabs .visible {
 	display: block;
 }
