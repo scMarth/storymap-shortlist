@@ -25,18 +25,14 @@ define(["dojo/topic"], function(topic) {
 
       // (DESKTOP) Everytime the Overview tab is clicked, hide the location markers
       $('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs').click(function(event) {
-         console.log($(event.target));
-
          if ($(event.target).is('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1)'))
             hideFirstTabLocationMarkers();
          else if ($(event.target).is('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1) > .entryLbl'))
             hideFirstTabLocationMarkers();
       });
 
-      // (MOBILE) Everytime the Overview tab is clicked, hide the location markers
+      // (MOBILE) Everytime the Overview tab is navigated to, hide the location markers
       $('#mobileThemeBar').click(function(event) {
-         //console.log($(event.target));
-
          if ($(event.target).is('#mobileThemeBar > #navThemeLeft'))
             hideFirstTabLocationMarkers();
          else if ($(event.target).is('#mobileThemeBar > #navThemeLeft > div.detail-btn.ion-chevron-left'))
