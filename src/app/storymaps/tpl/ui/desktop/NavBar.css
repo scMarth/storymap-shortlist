@@ -51,7 +51,7 @@
 }
 
 .nav-bar.isTab .entry.visible.active .entryLbl{
-	background-color: #a3bcdd !important;
+	background-color: #a3bcdd;
 }
 
 .nav-bar .nav-tabs .visible {
