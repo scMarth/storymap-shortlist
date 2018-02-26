@@ -11,6 +11,7 @@ define(["dojo/topic"], function(topic) {
 
       var slLayer = app.map.getLayer(app.data.getShortlistLayerId());
 
+      // Hide the first tab's location markers
       function hideFirstTabLocationMarkers(){
          for (var i=0; i<slLayer.graphics.length; i++){
             if (slLayer.graphics[i].attributes.tab_id == 0)
@@ -18,27 +19,107 @@ define(["dojo/topic"], function(topic) {
          }
       }
 
-      if (slLayer.updating)
-         slLayer.on("update-end", hideFirstTabLocationMarkers);
-      else
+      // Hide the number divs in the current tab
+      function hideCurrentTabNumbers(){
+         // Desktop
+         $('#myList.tilelist > li > div.footer > div.num').css('display', 'none');
+         $('#myList.tilelist > li > div.footer').css('padding-right', '14px');
+         $('#myList.tilelist > li > div.footer > div.blurb').css('text-align', 'center');
+         $('#myList.tilelist > li > div.footer > div.blurb').css('width', '100%');
+         $('#myList.tilelist > li > div.footer > div.blurb').css('margin-left', '0px');
+         $('#paneLeft > div.detailContainer.swiper-container.swiper-container-horizontal > div.detailView > div > div > div.detailFeatureNum').css('display', 'none');
+
+         // Mobile
+         $('#mobileList > li > div.footer > div.num').css('display', 'none');
+      }
+
+      // Show the number divs in the current tab
+      function showCurrentTabNumbers(){
+         // Desktop
+         $('#myList.tilelist > li > div.footer > div.num').css('display', 'block');
+         $('#myList.tilelist > li > div.footer').css('padding-right', '0px');
+         $('#myList.tilelist > li > div.footer > div.blurb').css('text-align', 'left');
+         $('#myList.tilelist > li > div.footer > div.blurb').css('width', '148px');
+         $('#myList.tilelist > li > div.footer > div.blurb').css('margin-left', '4px');
+         $('#paneLeft > div.detailContainer.swiper-container.swiper-container-horizontal > div.detailView > div > div > div.detailFeatureNum').css('display', 'block');
+
+         // Mobile
+         $('#mobileList > li > div.footer > div.num').css('display', 'block');
+      }
+
+      // (DESKTOP) Returns whether or not the Overview tab is selected
+      function overviewTabSelected(){
+         if ($('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1)').hasClass('active'))
+            return true;
+         else
+            return false;
+      }
+
+      // Styles the first tab as an Overview tab (hides numbers, hides location markers)
+      function firstTabToOverview(){
          hideFirstTabLocationMarkers();
+         hideCurrentTabNumbers();
+      }
+
+      // Attatch Overview tab styling to map's update-end event
+      if (slLayer.updating)
+         slLayer.on("update-end", firstTabToOverview);
+      else
+         firstTabToOverview();
 
       // (DESKTOP) Everytime the Overview tab is clicked, hide the location markers
       $('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs').click(function(event) {
          if ($(event.target).is('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1)'))
-            hideFirstTabLocationMarkers();
+            firstTabToOverview();
          else if ($(event.target).is('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1) > .entryLbl'))
-            hideFirstTabLocationMarkers();
+            firstTabToOverview();
+         else
+            showCurrentTabNumbers();
       });
 
-      // (MOBILE) Everytime the Overview tab is navigated to, hide the location markers
+      // (DESKTOP) Everytime an entry is clicked on the overview tab, hide the numbers
+      $('#myList').click(function(event) {
+         if (overviewTabSelected()){
+            hideCurrentTabNumbers();
+         }else{
+            showCurrentTabNumbers();
+         }
+      });
+
+      // (MOBILE) Returns whether or not the Overview tab is selected
+      function mobileOverviewTabSelected(){
+         if ($('#mobileThemeBarSlider > div.mobileThemeTitle.swiper-slide.swiper-slide-active > p')[0].innerHTML == "Overview")
+            return true;
+         else
+            return false;
+      }
+
+      // (MOBILE) Everytime an entry is clicked on the overview tab, hide the numbers
+      $('#mobileList').click(function(event) {
+         if (mobileOverviewTabSelected()){
+            hideCurrentTabNumbers();
+         }else{
+            showCurrentTabNumbers();
+         }
+      });
+
+      // (MOBILE) Hide / show numbers based on which item is selected in the mobile intro
+      $('#mobileThemeList').click(function(event) {
+         if ($(event.target).is('#mobileThemeList > li.mobileTitleThemes:nth-child(1)'))
+            hideCurrentTabNumbers();
+         else if ($(event.target).is('#mobileThemeList > li.mobileTitleThemes:nth-child(1) > span'))
+            hideCurrentTabNumbers();
+         else
+            showCurrentTabNumbers();
+      });
+
+      // (MOBILE) Everytime the Overview tab is navigated to, hide the location markers and numbers
       $('#mobileThemeBar').click(function(event) {
-         if ($(event.target).is('#mobileThemeBar > #navThemeLeft'))
-            hideFirstTabLocationMarkers();
-         else if ($(event.target).is('#mobileThemeBar > #navThemeLeft > div.detail-btn.ion-chevron-left'))
-            hideFirstTabLocationMarkers();
-         else if ($(event.target).is('#mobileThemeBar > #navThemeLeft > div.detail-btn.ion-chevron-left::before'))
-            hideFirstTabLocationMarkers();
+         if (mobileOverviewTabSelected()){
+            firstTabToOverview();
+         }else{
+            showCurrentTabNumbers();
+         }
       });
 
    });
