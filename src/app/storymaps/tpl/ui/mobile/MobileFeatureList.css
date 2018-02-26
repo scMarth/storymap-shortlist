@@ -8,7 +8,7 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: 100%;
-	background-color: rgb(163, 188, 221);
+	background-color:#fff;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -44,7 +44,7 @@ ul.mobileTileList li {
 	margin: 2px;
 	width: 100%;
 	font-family: 'open_sanssemibold', sans-serif;
-	font-size:16px;
+	font-size:14px;
 	cursor:pointer;
 	position:relative;
 	overflow: hidden;
@@ -112,7 +112,7 @@ ul.mobileTileList .blurb {
 	width: 100%;
 	top: 48%;
 	height: 40px;
-	background-color: rgb(34, 76, 91) !important;
+	background-color: rgb(68, 68, 68);
 	position: absolute;
 	color: #FFF;
 }

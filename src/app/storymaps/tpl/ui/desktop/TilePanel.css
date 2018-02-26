@@ -47,11 +47,11 @@
 	width: 520px;
 	height: 100%;
 	overflow: hidden;
-	background-color: #a3bcdd;
+	background-color: #C7C7C7;
+	padding: 8px;
 	/*border-top-width: 10px;
 	border-top-style: solid;*/
 	display: block;
-	padding: 0 !important;
 }
 
 #paneLeft .noFeature{
@@ -75,40 +75,23 @@
 ul.tilelist {
 	/* initial width -- will be re-calculated in app */
 	width: 495px;
-/*	padding-left: 40px;
-	padding-right: 40px;*/
-	padding: 0;
-	padding-top: 10px;
-	/*height: 100%;*/
-	padding-bottom: 0;
+	padding-left: 17px;
+	padding-bottom: 10px;
 	display: inline-block;
 	overflow: auto;
 	position: absolute;
-	top: 0;
+	top: 18px;
 	left: 0;
-	/*margin: 5px;*/
-	/*box-shadow: 4px 4px 2px #535456;*/
-	font-size: 11.5px;
-	font-weight: bold;
 }
-
-/*
-#myList{
-	margin: 0 !important;
-	padding: 0 !important;
-	width: 100%;
-	height: 100%;
-}
-*/
 
 ul.tilelist li {
 	list-style-type: none;
 	margin: 3px;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	float: left;
 	font-size: 10px;
-	background-color: #e4e1e1;
+	background-color: #F9F9F9;
 	cursor: pointer;
 	position: relative;
 }
@@ -141,10 +124,8 @@ ul.tilelist img {
 	background-position: 50% 50%;
 	/*background-size: contain;*/
 	background-repeat: no-repeat;
-	margin: 15px;
-	background-size: 180px;
-	width: 170px;
-	height: 133px;
+	width: 150px;
+	height: 113px;
 }
 
 .tileImage i{
@@ -162,18 +143,10 @@ ul.tilelist p {
 }
 
 ul.tilelist .footer {
+	padding-left: 5px;
 	position: absolute;
-	top: 150px;
-	width: 100%;
-	margin: 0 !important;
-	padding-left: 14px;
-	height: 50px;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	align-items: center;
+	top: 118px;
+	left: 0px;
 }
 
 ul.tilelist .num {
@@ -183,7 +156,6 @@ ul.tilelist .num {
 	float: left;
 	border: solid;
 	border-width: thin;
-	display: block;
 	color: white;
 	font-size: 11px;
 	text-align: center;
@@ -196,9 +168,11 @@ ul.tilelist .longNum {
 }
 
 ul.tilelist .blurb {
-	width: 148px;
+	width: 116px;
+	height: 30px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	word-wrap: break-word;
@@ -206,18 +180,10 @@ ul.tilelist .blurb {
 	margin-left: 4px;
 	text-align: left;
 	font-family: 'open_sansregular', sans-serif;
-	font-size: 14px;
 }
 
 .unNumBlurb {
-	width: 100% !important;
-	padding-left: 10px !important;
-	padding-right: 10px !important;
-	text-align: center !important;
-	top: 133px !important;
-	font-size: 14px;
-	line-height: unset !important;
-	margin-left: 0 !important;
+	width: 136px !important;
 }
 
 ul.tilelist .longNumBlurb {

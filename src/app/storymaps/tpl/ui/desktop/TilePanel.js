@@ -3,9 +3,8 @@ define(["esri/geometry/screenUtils",
 		"storymaps/common/utils/CommonHelper",
 		"lib-build/tpl!./TilePanel",
 		"lib-build/css!./TilePanel",
-		"../../../../config",
 		"../../core/WebApplicationData"],
-	function(screenUtils, Helper, CommonHelper, tilePanel, config){
+	function(screenUtils, Helper, CommonHelper, tilePanel){
 		return function TilePanel(container, mainView, WebApplicationData)
 		{
 			var _this = this;
@@ -31,8 +30,7 @@ define(["esri/geometry/screenUtils",
 			this.resize = function(newWidth)
 			{
 				$("#paneLeft").width(newWidth);
-				$(".tilelist").width(newWidth - (app.cfg.MYLIST_MARGIN));
-				$(".tilelist").css('padding-left', app.cfg.MYLIST_MARGIN);
+				$(".tilelist").width(newWidth);
 			};
 
 			this.createTab = function(index, layer){
@@ -230,7 +228,7 @@ define(["esri/geometry/screenUtils",
 			this.destroySortable = function()
 			{
 				$('#myList').sortable('destroy');
-				$('#myList').css('background-color', '#a3bcdd');
+				$('#myList').css('background-color', '#C7C7C7');
 				$('body').removeClass('organizeFeatures');
 				$('#myList').removeClass('organize');
 			};

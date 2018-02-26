@@ -12,7 +12,6 @@
 
 .nav-bar.isTab {
 	/*height: 40px;*/
-	background-color: transparent;
 }
 
 .nav-bar .entries,
@@ -43,15 +42,11 @@
 	padding: 3px 12px 6px 12px;
 	font-weight: normal;
 	border: none;
-	/*border-radius: 6px 6px 0 0;*/
+	border-radius: 6px 6px 0 0;
 }
 
 .nav-bar.isTab .entry:first-child .entryLbl {
 	margin-left: 0;
-}
-
-.nav-bar.isTab .entry.visible.active .entryLbl{
-	background-color: #a3bcdd !important;
 }
 
 .nav-bar .nav-tabs .visible {

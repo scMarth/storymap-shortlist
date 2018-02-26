@@ -6,8 +6,6 @@
 
 	margin: 0;
 	overflow: hidden;
-  background-image: url(../../../../../resources/images/Banner.png);
-  background-position: left; background-repeat: no-repeat; /*height: 115px;*/
 }
 
 #header .title {
@@ -96,7 +94,6 @@
 	padding-top: 22px;
 	padding-right: 20px;
 	text-align: right;
-	background-color: transparent;
 }
 
 #headerDesktop.compact .linkSocialContainer {
@@ -257,14 +254,6 @@
 	padding-top: 10px;
 	padding-left: 16px;
 	width: 70%;
-}
-
-.subtitle{
-   opacity: 0;
-}
-
-.title{
-   color: transparent;
 }
 
 #headerDesktop .title.error {

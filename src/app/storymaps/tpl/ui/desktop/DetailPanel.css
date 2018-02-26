@@ -9,9 +9,8 @@
 }
 
 .detailContainer.swiper-container{
-/*	margin-top: -18px;
-	margin-left: -8px;*/
-	margin: 0 !important;
+	margin-top: -18px;
+	margin-left: -8px;
 }
 
 .detailBackground {
@@ -28,7 +27,7 @@
 .detailView {
 	opacity: 1;
 	width: inherit;
-	background-color: #a3bcdd;
+	background-color: white;
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
@@ -65,8 +64,6 @@
 }
 
 [class^="ion-"]:before, [class*=" ion-"]:before {
-	/*color: #333 !important;*/
-	color: white !important;
 	font-family: "Ionicons";
 	font-style: normal;
 	font-weight: normal;
@@ -147,14 +144,7 @@
 
 .detailHeader {
 	/*margin-right: 95px;*/
-	padding-top: 10px;
-	padding-bottom: 10px;
-	color: white !important;
-	/*background-color: rgb(34, 76, 91);*/
-	/*background-color: black;*/
-
-	margin-bottom: 20px;
-	top: 0 !important;
+	margin-bottom: 12px;
 }
 
 .detailFeatureNum{
@@ -170,16 +160,13 @@
 }
 
 .detailFeatureTitle{
-	height: 100%;
-	text-align: center;
-	color: white;
-	/*color: #333;*/
+	color: #333;
 	font-family: 'open_sanssemibold', sans-serif;
 	font-size: 22px;
 	text-align: left;
 	padding-left: 60px;
 	padding-top: 17px;
-	margin-top: 10px !important;
+	margin-top: -45px;
 	margin-right: 125px;
 	line-height: 26px;
 	word-wrap: break-word;
@@ -188,31 +175,23 @@
 .notNumbered{
 	padding-top: 0;
 	padding-left: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 20px;
 }
 
 .detailPictureDiv {
-	width: 100% !important;
-	height: auto;
-	/*margin-bottom: -5px;*/
+	margin-bottom: -5px;
 	min-height: 100px;
-	/*overflow-x: hidden;*/
+	overflow-x: hidden;
 	/*text-align: left;*/
-	line-height: 100% !important;
-	vertical-align: middle !important;
+	text-align: center;
 	/*position: fixed;*/
 }
 
 .detailPictureDiv img{
-	max-width: none !important;
-	max-height: none !important;
-
-	width: 100%;
+	width: auto;
 	height: auto;
 	margin: auto;
 	cursor: pointer;
-	border-radius: 7px !important;
 	/*padding-left: 5px;
 	padding-right: 5px;*/
 	/*max-height: 298px;*/
@@ -222,8 +201,6 @@
 	overflow-y: auto;
 	position: absolute !important;
 	width: 100%;
-	padding-left: 10%;
-	padding-right: 10%;
 }
 
 .shortDesc{
@@ -241,8 +218,8 @@
 	color: #000;
 	font-size: 14px;
 	text-align: left;
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 20px;
+	padding-right: 20px;
 	padding-bottom: 15px;
 	font-weight: normal;
 	margin-top: 20px;
@@ -252,9 +229,6 @@
 
 .detailFeatureDesc p {
   margin-top: 10px;
-  /*border-radius: 0 !important;*/
-  border: none !important;
-  padding: 10px !important;
 }
 
 .detailFeatureDesc a{

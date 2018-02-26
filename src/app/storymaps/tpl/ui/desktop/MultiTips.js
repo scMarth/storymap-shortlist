@@ -251,8 +251,6 @@ define(["dojo/dom-style",
 
 			function displayTip(scrPt, i, settings)
 			{
-				if ($('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > li.entry:nth-child(1)').hasClass('active')) return;
-
 				if(!(dom.byId('multiTip' + i)))
 					return;
 				if( scrPt.x > settings.mapAuthorizedWidth || scrPt.y > settings.mapAuthorizedHeight ) {
