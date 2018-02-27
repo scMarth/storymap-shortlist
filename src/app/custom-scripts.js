@@ -13,7 +13,6 @@ define(["dojo/topic"], function(topic) {
 
       function arrowsVisible(){
          var detailContainers = $('#paneLeft > div.detailContainer');
-         console.log(detailContainers[0]);
          var result = false;
          for (var i=0; i<detailContainers.length; i++){
             if (!(detailContainers[i])) continue;
