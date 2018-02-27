@@ -24,8 +24,22 @@ define(["dojo/topic"], function(topic) {
 
       function checkKey(e){
          e = e || window.event;
+
+         // almost works, but tooltips / current marker enlarge doesn't work
+         /*
          var leftArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-left');
          var rightArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-right');
+         */
+
+         // almost works, but tooltips / current marker enlarge doesn't work
+         /*
+         var leftArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-left > div');
+         var rightArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-right > div');
+         */
+
+         var leftArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-left > div');
+         var rightArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-right > div');
+         var themeIndex = $('.entry.active').index();
 
          if (e.keyCode == '38') {
             // up arrow
@@ -39,14 +53,20 @@ define(["dojo/topic"], function(topic) {
             // left arrow
             //if (leftArrowBtn && arrowsVisible()){
             if (arrowsVisible()){
-               leftArrowBtn.click();
+               // $('#paneLeft > div.detailContainer').click();
+               // leftArrowBtn.before().click();
+               $('#paneLeft > div.detailContainer').find($('.detail-btn-left')[themeIndex]).click();
+
+               //container.find($(".detail-btn-right")[themeIndex]).click(function(){
             }
          }
          else if (e.keyCode == '39') {
             // right arrow
             //if (rightArrowBtn && arrowsVisible()){
             if (arrowsVisible()){
-               rightArrowBtn.click();
+               $('#paneLeft > div.detailContainer').find($('.detail-btn-right')[themeIndex]).click();
+               // $('#paneLeft > div.detailContainer').click();
+               // rightArrowBtn.before().click();
             }
          }
       }
