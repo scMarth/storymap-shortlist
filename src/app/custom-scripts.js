@@ -11,12 +11,29 @@ define(["dojo/topic"], function(topic) {
 
       document.onkeydown = checkKey;
 
-      function arrowsVisible(){
+      function detailBtnsVisible(){
          var detailContainers = $('#paneLeft > div.detailContainer');
+         //console.log(detailContainers);
          var result = false;
-         for (var i=0; i<detailContainers.length; i++){
-            if (!(detailContainers[i])) continue;
-            if ($('#paneLeft > div.detailContainer').children(i).css('display') == 'block') result = true;
+         var prefixStr = '#paneLeft > div.detailContainer:nth-child(';
+         var suffixStr = ')';
+
+         for (var i=1; i<=detailContainers.length; i++){
+            var selector = prefixStr + i + suffixStr;
+            //console.log(selector);
+            var current = $(selector);
+            // console.log('current:');
+            // console.log(current);
+
+            if (!(current)) continue;
+            // console.log("detailcontainers sub i:");
+            // console.log(detailContainers[i]);
+            // console.log($('#paneLeft > div.detailContainer').children(i));
+            // console.log($('#paneLeft > div.detailContainer').children(i).css('display'));
+            // console.log($('#paneLeft > div.detailContainer')[i]);
+            // console.log(detailContainers.css('display'));
+            //if ($('#paneLeft > div.detailContainer').children(i).css('display') == 'block') result = true;
+            if (current.css('display') == 'block') result = true;
          }
          return result;
       }
@@ -38,14 +55,27 @@ define(["dojo/topic"], function(topic) {
          }
          else if (e.keyCode == '37') {
             // left arrow
-            if (arrowsVisible()){
+            console.log(detailBtnsVisible());
+            if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-left')[themeIndex]).click();
-            }
+            }else return;
          }
          else if (e.keyCode == '39') {
+            console.log(detailBtnsVisible());
             // right arrow
-            if (arrowsVisible()){
+            if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-right')[themeIndex]).click();
+            } else return;
+         }else if (e.keyCode == '27'){
+            console.log(detailBtnsVisible());
+            // escape key
+            if (detailBtnsVisible()){
+               $('button.detailClose').click();
+            } else return;
+         }else{
+            // else
+            if (detailBtnsVisible()){
+               console.log(e.keyCode);
             }
          }
       }
