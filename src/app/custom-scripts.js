@@ -9,23 +9,29 @@ define(["dojo/topic"], function(topic) {
       * Custom Javascript to be executed when the application is ready goes here
       */
 
-      document.onkeydown = checkKey;
+      document.onkeydown = processKey;
 
-      function arrowsVisible(){
+      function detailBtnsVisible(){
          var detailContainers = $('#paneLeft > div.detailContainer');
          var result = false;
-         for (var i=0; i<detailContainers.length; i++){
-            if (!(detailContainers[i])) continue;
-            if ($('#paneLeft > div.detailContainer').children(i).css('display') == 'block') result = true;
+         var prefixStr = '#paneLeft > div.detailContainer:nth-child(';
+         var suffixStr = ')';
+
+         // Check all detailContainers (the elements that contain the buttons) for each tab
+         // if at least one is visible (i.e. not 'none') then that means buttons are visible
+         for (var i=1; i<=detailContainers.length; i++){
+            var selector = prefixStr + i + suffixStr; // Construct the selector
+            var current = $(selector); // Use the selector to select the current detailContainer
+
+            if (!(current)) continue; // Continue if it's undefined
+            if (current.css('display') == 'block') result = true;
          }
          return result;
       }
 
-      function checkKey(e){
+      function processKey(e){
          e = e || window.event;
 
-         var leftArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-left > div');
-         var rightArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-right > div');
          var themeIndex = $('.entry.active').index();
 
          if (e.keyCode == '38') {
@@ -38,16 +44,27 @@ define(["dojo/topic"], function(topic) {
          }
          else if (e.keyCode == '37') {
             // left arrow
-            if (arrowsVisible()){
+            if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-left')[themeIndex]).click();
-            }
+            }else return;
          }
          else if (e.keyCode == '39') {
             // right arrow
-            if (arrowsVisible()){
+            if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-right')[themeIndex]).click();
+            } else return;
+         }else if (e.keyCode == '27'){
+            // escape key
+            if (detailBtnsVisible()){
+               $('button.detailClose').click();
+            } else return;
+         }else{
+            // else
+            if (detailBtnsVisible()){
+               //console.log(e.keyCode);
             }
          }
+
       }
    });
 });
