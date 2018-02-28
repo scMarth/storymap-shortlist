@@ -9,40 +9,29 @@ define(["dojo/topic"], function(topic) {
       * Custom Javascript to be executed when the application is ready goes here
       */
 
-      document.onkeydown = checkKey;
+      document.onkeydown = processKey;
 
       function detailBtnsVisible(){
          var detailContainers = $('#paneLeft > div.detailContainer');
-         //console.log(detailContainers);
          var result = false;
          var prefixStr = '#paneLeft > div.detailContainer:nth-child(';
          var suffixStr = ')';
 
+         // Check all detailContainers (the elements that contain the buttons) for each tab
+         // if at least one is visible (i.e. not 'none') then that means buttons are visible
          for (var i=1; i<=detailContainers.length; i++){
-            var selector = prefixStr + i + suffixStr;
-            //console.log(selector);
-            var current = $(selector);
-            // console.log('current:');
-            // console.log(current);
+            var selector = prefixStr + i + suffixStr; // Construct the selector
+            var current = $(selector); // Use the selector to select the current detailContainer
 
-            if (!(current)) continue;
-            // console.log("detailcontainers sub i:");
-            // console.log(detailContainers[i]);
-            // console.log($('#paneLeft > div.detailContainer').children(i));
-            // console.log($('#paneLeft > div.detailContainer').children(i).css('display'));
-            // console.log($('#paneLeft > div.detailContainer')[i]);
-            // console.log(detailContainers.css('display'));
-            //if ($('#paneLeft > div.detailContainer').children(i).css('display') == 'block') result = true;
+            if (!(current)) continue; // Continue if it's undefined
             if (current.css('display') == 'block') result = true;
          }
          return result;
       }
 
-      function checkKey(e){
+      function processKey(e){
          e = e || window.event;
 
-         var leftArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-left > div');
-         var rightArrowBtn = $('#paneLeft > div.detailContainer > div.detail-btn-container.detail-btn-right > div');
          var themeIndex = $('.entry.active').index();
 
          if (e.keyCode == '38') {
@@ -55,19 +44,16 @@ define(["dojo/topic"], function(topic) {
          }
          else if (e.keyCode == '37') {
             // left arrow
-            console.log(detailBtnsVisible());
             if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-left')[themeIndex]).click();
             }else return;
          }
          else if (e.keyCode == '39') {
-            console.log(detailBtnsVisible());
             // right arrow
             if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-right')[themeIndex]).click();
             } else return;
          }else if (e.keyCode == '27'){
-            console.log(detailBtnsVisible());
             // escape key
             if (detailBtnsVisible()){
                $('button.detailClose').click();
@@ -75,9 +61,10 @@ define(["dojo/topic"], function(topic) {
          }else{
             // else
             if (detailBtnsVisible()){
-               console.log(e.keyCode);
+               //console.log(e.keyCode);
             }
          }
+
       }
    });
 });
