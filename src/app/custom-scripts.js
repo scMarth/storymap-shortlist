@@ -9,6 +9,10 @@ define(["dojo/topic"], function(topic) {
       * Custom Javascript to be executed when the application is ready goes here
       */
 
+
+      /*****************************************************************
+      * Keyboard Navigation
+      *****************************************************************/
       document.onkeydown = processKey;
 
       function detailBtnsVisible(){
