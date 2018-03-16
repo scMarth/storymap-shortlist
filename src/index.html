@@ -77,7 +77,26 @@
 				/* Uncomment for light blue tab colors */
 				/*background-color: #a3bcdd !important;*/
 			}
+
+			#popupImg {
+				max-width: 100%;
+				max-height: 100%;
+			}
+			#popupImgContainer {
+				z-index: 100;
+				position: absolute;
+				margin-left: 10%;
+				margin-top: 10%;
+				width: 80%;
+				height: auto;
+				display: none;
+			}
+
 		</style>
+
+		<div id="popupImgContainer">
+			<img id="popupImg" src="">
+		</div>
 
 		<!-- Builder top panel is injected here -->
 		<div id="builderPanel" class="hide mainViewAboveMap"></div>

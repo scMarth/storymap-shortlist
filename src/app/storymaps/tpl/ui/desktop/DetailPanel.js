@@ -502,10 +502,14 @@ define(["../../core/Helper",
 					$(newSlide).data('shortlist-id', atts.shortlist_id);
 
 					$(newSlide).find(".detailPictureDiv img").click(function(){
+						//console.log($('.entry.active'));
+						
+						/*
 						var themeIndex = $('.entry.active').index();
 						if(themeIndex<0)
 							themeIndex = 0;
 						if(!_mainView.selected){
+							// Apparently this is never called at least in the desktop UI when you click on a image in the panel
 							var nextSlideId = _swipers[themeIndex].activeIndex + 1;
 							if(_swipers[themeIndex].activeIndex === _swipers[themeIndex].slides.length - 1){
 								nextSlideId = 0;
@@ -527,9 +531,32 @@ define(["../../core/Helper",
 							if(isEdge || isWin10)
 								$('.swiper-slide-active .detailTextContainer').css({'overflow-y': 'visible'});
 							_swipers[themeIndex].slideNext();
+
 							if(isEdge || isWin10)
 								$('.swiper-slide-active .detailTextContainer').css({'overflow-y': 'auto'});
 						}
+						*/
+						//var currentIndex = _swipers[themeIndex].activeIndex;
+						//console.log($(newSlide));
+						//console.log(currentIndex);
+						//console.log(_swipers[themeIndex].slides[currentIndex].innerHTML);
+						//console.log(_swipers[themeIndex].slides[currentIndex]);
+						var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc;
+						var bgiVal = 'url("' + currentImageUrl + '")';
+						$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
+						// $("#popupImgContainer").css("background-image", bgiVal);
+						$("#popupImgContainer").css("background-attachment", "fixed");
+						$("#popupImgContainer").css("background-position", "center");
+						$("#popupImgContainer").css("background-repeat", "no-repeat");
+						$("#popupImgContainer").css("background-size", "cover");
+						$("#popupImgContainer").css("display", "block"); // Show the popup image
+						$("#popupImgContainer").click(function(){
+							$($("#popupImgContainer")).css("display", "none");
+						});
+						$("#popupImg").click(function(){
+							$($("#popupImgContainer")).css("display", "none");
+						});
+						//console.log(_swipers[themeIndex]);
 					});
 
 					_swiperSlides[String(themeIndex)].push(newSlide);
@@ -777,7 +804,6 @@ define(["../../core/Helper",
 					$(currentDetailContainer).hide();
 					$(currentDetailContainer).show();
 					$(currentDetailContainer).css('z-index', 99);
-
 				}
 				else{
 					setTimeout(function(){
