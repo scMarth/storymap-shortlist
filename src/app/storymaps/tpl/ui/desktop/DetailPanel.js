@@ -501,60 +501,32 @@ define(["../../core/Helper",
 
 					$(newSlide).data('shortlist-id', atts.shortlist_id);
 
+					if ()
 					$(newSlide).find(".detailPictureDiv img").click(function(){
-						//console.log($('.entry.active'));
-						
-						/*
-						var themeIndex = $('.entry.active').index();
-						if(themeIndex<0)
-							themeIndex = 0;
-						if(!_mainView.selected){
-							// Apparently this is never called at least in the desktop UI when you click on a image in the panel
-							var nextSlideId = _swipers[themeIndex].activeIndex + 1;
-							if(_swipers[themeIndex].activeIndex === _swipers[themeIndex].slides.length - 1){
-								nextSlideId = 0;
-							}
-							var nextSlide = _swipers[themeIndex].slides[nextSlideId];
-							var slideShortlistID = $(nextSlide).data('shortlist-id')
-							var shortlistLayer = app.map.getLayer(app.data.getWebAppData().getShortlistLayerId());
-							app.ui.mainView.selected = $.grep(shortlistLayer.graphics,function(n){return n.attributes.shortlist_id == slideShortlistID;})[0];
-						}
-						_mainView.selected.updated = false;
-						if(_swipers[themeIndex].activeIndex == _swipers[themeIndex].slides.length - 1){
-							if(isEdge || isWin10)
-								$('.swiper-slide-active .detailTextContainer').css({'overflow-y': 'visible'});
-							_swipers[themeIndex].slideTo(0, 0);
-							if(isEdge || isWin10)
-								$('.swiper-slide-active .detailTextContainer').css({'overflow-y': 'auto'});
-						}
-						else {
-							if(isEdge || isWin10)
-								$('.swiper-slide-active .detailTextContainer').css({'overflow-y': 'visible'});
-							_swipers[themeIndex].slideNext();
-
-							if(isEdge || isWin10)
-								$('.swiper-slide-active .detailTextContainer').css({'overflow-y': 'auto'});
-						}
-						*/
-						//var currentIndex = _swipers[themeIndex].activeIndex;
-						//console.log($(newSlide));
-						//console.log(currentIndex);
-						//console.log(_swipers[themeIndex].slides[currentIndex].innerHTML);
-						//console.log(_swipers[themeIndex].slides[currentIndex]);
-						var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc;
+						// Show a popup of an enlarged version of the image
+						var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
 						var bgiVal = 'url("' + currentImageUrl + '")';
 						$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
-						// $("#popupImgContainer").css("background-image", bgiVal);
+						// Set CSS properties
 						$("#popupImgContainer").css("background-attachment", "fixed");
 						$("#popupImgContainer").css("background-position", "center");
 						$("#popupImgContainer").css("background-repeat", "no-repeat");
 						$("#popupImgContainer").css("background-size", "cover");
+						$("#popupImgContainer").css("cursor", "pointer");
+						$("#popupImgContainer").css("height", ($(window).height() * 0.9));
+						$("#popupImgContainer").css("margin-top", ($(window).height() * 0.05));
+						$("#popupImgContainer").css("margin-left", ($(window).width() * 0.05));
+						var bRadius = 0.0205 * $(window).height(); // Calculate border radius
+						$("#popupImg").css("border-radius", bRadius);
+
 						$("#popupImgContainer").css("display", "block"); // Show the popup image
 						$("#popupImgContainer").click(function(){
-							$($("#popupImgContainer")).css("display", "none");
+							$("#popupImgContainer").css("display", "none");
+							$("#popupImgContainer").css("cursor", "default");
 						});
 						$("#popupImg").click(function(){
-							$($("#popupImgContainer")).css("display", "none");
+							$("#popupImgContainer").css("display", "none");
+							$("#popupImgContainer").css("cursor", "default");
 						});
 						//console.log(_swipers[themeIndex]);
 					});
