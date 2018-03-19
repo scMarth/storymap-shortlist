@@ -501,14 +501,20 @@ define(["../../core/Helper",
 
 					$(newSlide).data('shortlist-id', atts.shortlist_id);
 
-					//console.log(CommonHelper.prependURLHTTP(container.find('.mediaURL').val().trim())); // fails
+					/********************************************************
+					* Popup enlarged image if an image is clicked / tapped on
+					********************************************************/
 
 					if (app.ui.mobileIntro.screenSize == "desktop"){
+						// DESKTOP
+
 						$(newSlide).find(".detailPictureDiv img").click(function(){
+
 							// Show a popup of an enlarged version of the image when the image is clicked
 							var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
 							var bgiVal = 'url("' + currentImageUrl + '")';
 							$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
+
 							// Set CSS properties
 							$("#popupImgContainer").css("background-attachment", "fixed");
 							$("#popupImgContainer").css("background-position", "center");
@@ -522,7 +528,10 @@ define(["../../core/Helper",
 							var bRadius = 0.0205 * $(window).height(); // Calculate border radius
 							$("#popupImg").css("border-radius", bRadius);
 
-							$("#popupImgContainer").css("display", "block"); // Show the popup image
+							 // Show the popup image
+							$("#popupImgContainer").css("display", "block");
+
+							// Add ability to hide image
 							$("#popupImgContainer").click(function(){
 								$("#popupImgContainer").css("display", "none");
 								$("#popupImgContainer").css("cursor", "default");
@@ -531,18 +540,22 @@ define(["../../core/Helper",
 								$("#popupImgContainer").css("display", "none");
 								$("#popupImgContainer").css("cursor", "default");
 							});
-							//console.log(_swipers[themeIndex]);
 						});
 					}else{
+						// MOBILE
+
 						$(newSlide).find(".detailPictureDiv img").click(function(){
+
 							// Show a popup of an enlarged version of the image when the image is clicked
 							var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
+
 							// Find the maximum size of the image
 							currentImageUrl = currentImageUrl.substring(0, currentImageUrl.length - 9);
 							currentImageUrl += "w1434.jpg";
-							//console.log(currentImageUrl);
+
 							var bgiVal = 'url("' + currentImageUrl + '")';
 							$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
+
 							// Set CSS properties
 							$("#popupImgContainer").css("background-attachment", "fixed");
 							$("#popupImgContainer").css("background-position", "center");
@@ -555,23 +568,30 @@ define(["../../core/Helper",
 
 							if ($(window).height() > $(window).width()){
 								// Portrait Mode
+								
 								$("#popupImgContainer").css("width", $(window).width());
 								$("#popupImg").css("height", "auto");
 								$("#popupImg").css("width", "100%");
+
 								 // Calculate border radius with respect to width
 								var bRadius = 0.01786 * $(window).width();
 								$("#popupImg").css("border-radius", bRadius);
 							}else{
 								// Landscape Mode
+
 								$("#popupImgContainer").css("height", $(window).height());
 								$("#popupImg").css("width", "auto");
 								$("#popupImg").css("height", "100%");
+
 								 // Calculate border radius with respect to height
 								var bRadius = 0.02276 * $(window).height();
 								$("#popupImg").css("border-radius", bRadius);
 							}
 
-							$("#popupImgContainer").css("display", "block"); // Show the popup image
+ 							// Show the popup image
+							$("#popupImgContainer").css("display", "block");
+
+							// Add ability to hide image
 							$("#popupImgContainer").click(function(){
 								$("#popupImgContainer").css("display", "none");
 								$("#popupImgContainer").css("cursor", "default");
