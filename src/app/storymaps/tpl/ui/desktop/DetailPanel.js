@@ -501,35 +501,87 @@ define(["../../core/Helper",
 
 					$(newSlide).data('shortlist-id', atts.shortlist_id);
 
-					if ()
-					$(newSlide).find(".detailPictureDiv img").click(function(){
-						// Show a popup of an enlarged version of the image
-						var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
-						var bgiVal = 'url("' + currentImageUrl + '")';
-						$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
-						// Set CSS properties
-						$("#popupImgContainer").css("background-attachment", "fixed");
-						$("#popupImgContainer").css("background-position", "center");
-						$("#popupImgContainer").css("background-repeat", "no-repeat");
-						$("#popupImgContainer").css("background-size", "cover");
-						$("#popupImgContainer").css("cursor", "pointer");
-						$("#popupImgContainer").css("height", ($(window).height() * 0.9));
-						$("#popupImgContainer").css("margin-top", ($(window).height() * 0.05));
-						$("#popupImgContainer").css("margin-left", ($(window).width() * 0.05));
-						var bRadius = 0.0205 * $(window).height(); // Calculate border radius
-						$("#popupImg").css("border-radius", bRadius);
+					//console.log(CommonHelper.prependURLHTTP(container.find('.mediaURL').val().trim())); // fails
 
-						$("#popupImgContainer").css("display", "block"); // Show the popup image
-						$("#popupImgContainer").click(function(){
-							$("#popupImgContainer").css("display", "none");
-							$("#popupImgContainer").css("cursor", "default");
+					if (app.ui.mobileIntro.screenSize == "desktop"){
+						$(newSlide).find(".detailPictureDiv img").click(function(){
+							// Show a popup of an enlarged version of the image when the image is clicked
+							var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
+							var bgiVal = 'url("' + currentImageUrl + '")';
+							$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
+							// Set CSS properties
+							$("#popupImgContainer").css("background-attachment", "fixed");
+							$("#popupImgContainer").css("background-position", "center");
+							$("#popupImgContainer").css("background-repeat", "no-repeat");
+							$("#popupImgContainer").css("background-size", "cover");
+							$("#popupImgContainer").css("cursor", "pointer");
+							$("#popupImgContainer").css("width", "auto");
+							$("#popupImgContainer").css("height", ($(window).height() * 0.9));
+							$("#popupImgContainer").css("margin-top", ($(window).height() * 0.05));
+							$("#popupImgContainer").css("margin-left", ($(window).width() * 0.05));
+							var bRadius = 0.0205 * $(window).height(); // Calculate border radius
+							$("#popupImg").css("border-radius", bRadius);
+
+							$("#popupImgContainer").css("display", "block"); // Show the popup image
+							$("#popupImgContainer").click(function(){
+								$("#popupImgContainer").css("display", "none");
+								$("#popupImgContainer").css("cursor", "default");
+							});
+							$("#popupImg").click(function(){
+								$("#popupImgContainer").css("display", "none");
+								$("#popupImgContainer").css("cursor", "default");
+							});
+							//console.log(_swipers[themeIndex]);
 						});
-						$("#popupImg").click(function(){
-							$("#popupImgContainer").css("display", "none");
-							$("#popupImgContainer").css("cursor", "default");
+					}else{
+						$(newSlide).find(".detailPictureDiv img").click(function(){
+							// Show a popup of an enlarged version of the image when the image is clicked
+							var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
+							// Find the maximum size of the image
+							currentImageUrl = currentImageUrl.substring(0, currentImageUrl.length - 9);
+							currentImageUrl += "w1434.jpg";
+							//console.log(currentImageUrl);
+							var bgiVal = 'url("' + currentImageUrl + '")';
+							$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
+							// Set CSS properties
+							$("#popupImgContainer").css("background-attachment", "fixed");
+							$("#popupImgContainer").css("background-position", "center");
+							$("#popupImgContainer").css("background-repeat", "no-repeat");
+							$("#popupImgContainer").css("background-size", "cover");
+							$("#popupImgContainer").css("cursor", "pointer");
+							$("#popupImgContainer").css("height", "auto");
+							$("#popupImgContainer").css("margin-top", 0);
+							$("#popupImgContainer").css("margin-left", 0);
+
+							if ($(window).height() > $(window).width()){
+								// Portrait Mode
+								$("#popupImgContainer").css("width", $(window).width());
+								$("#popupImg").css("height", "auto");
+								$("#popupImg").css("width", "100%");
+								 // Calculate border radius with respect to width
+								var bRadius = 0.01786 * $(window).width();
+								$("#popupImg").css("border-radius", bRadius);
+							}else{
+								// Landscape Mode
+								$("#popupImgContainer").css("height", $(window).height());
+								$("#popupImg").css("width", "auto");
+								$("#popupImg").css("height", "100%");
+								 // Calculate border radius with respect to height
+								var bRadius = 0.02276 * $(window).height();
+								$("#popupImg").css("border-radius", bRadius);
+							}
+
+							$("#popupImgContainer").css("display", "block"); // Show the popup image
+							$("#popupImgContainer").click(function(){
+								$("#popupImgContainer").css("display", "none");
+								$("#popupImgContainer").css("cursor", "default");
+							});
+							$("#popupImg").click(function(){
+								$("#popupImgContainer").css("display", "none");
+								$("#popupImgContainer").css("cursor", "default");
+							});
 						});
-						//console.log(_swipers[themeIndex]);
-					});
+					}
 
 					_swiperSlides[String(themeIndex)].push(newSlide);
 
