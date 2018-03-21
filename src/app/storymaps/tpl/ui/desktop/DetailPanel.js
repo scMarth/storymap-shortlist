@@ -566,7 +566,6 @@ define(["../../core/Helper",
 							$("#popupImgContainer").css("background-repeat", "no-repeat");
 							$("#popupImgContainer").css("background-size", "cover");
 							$("#popupImgContainer").css("cursor", "pointer");
-							//$("#popupImgContainer").css("height", "auto");
 							$("#popupImgContainer").css("margin-top", 0);
 							$("#popupImgContainer").css("margin-left", 0);
 
