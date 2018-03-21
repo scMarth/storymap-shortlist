@@ -509,9 +509,11 @@ define(["../../core/Helper",
 						// DESKTOP
 
 						$(newSlide).find(".detailPictureDiv img").click(function(){
-
 							// Show a popup of an enlarged version of the image when the image is clicked
-							var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
+
+							var currentIndex = _swipers[themeIndex].activeIndex;
+							 // Get the URL of the image that was clicked
+							var currentImageUrl = $(_swipers[themeIndex].slides[currentIndex]).find(".detailPictureDiv img")[0].currentSrc;
 							var bgiVal = 'url("' + currentImageUrl + '")';
 							$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
 
@@ -545,9 +547,11 @@ define(["../../core/Helper",
 						// MOBILE
 
 						$(newSlide).find(".detailPictureDiv img").click(function(){
-
 							// Show a popup of an enlarged version of the image when the image is clicked
-							var currentImageUrl = $(newSlide).find(".detailPictureDiv img")[0].currentSrc; // Get the URL of the image that was clicked
+
+							var currentIndex = _swipers[themeIndex].activeIndex;
+							 // Get the URL of the image that was clicked
+							var currentImageUrl = $(_swipers[themeIndex].slides[currentIndex]).find(".detailPictureDiv img")[0].currentSrc;
 
 							// Find the maximum size of the image
 							currentImageUrl = currentImageUrl.substring(0, currentImageUrl.length - 9);
