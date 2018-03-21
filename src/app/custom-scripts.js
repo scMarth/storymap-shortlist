@@ -10,6 +10,10 @@ define(["dojo/topic"], function(topic) {
       */
 
       /*****************************************************************
+      * Popup Image
+      *****************************************************************/
+
+      /*****************************************************************
       * Keyboard Navigation
       *****************************************************************/
 
@@ -48,12 +52,22 @@ define(["dojo/topic"], function(topic) {
          }
          else if (e.keyCode == '37') {
             // left arrow
+
+            // Hide the popup image
+            $("#popupImgContainer").css("display", "none");
+            $("#popupImgContainer").css("cursor", "default");
+
             if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-left')[themeIndex]).click();
             }else return;
          }
          else if (e.keyCode == '39') {
             // right arrow
+
+            // Hide the popup image
+            $("#popupImgContainer").css("display", "none");
+            $("#popupImgContainer").css("cursor", "default");
+            
             if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-right')[themeIndex]).click();
             } else return;

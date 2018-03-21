@@ -566,7 +566,7 @@ define(["../../core/Helper",
 							$("#popupImgContainer").css("background-repeat", "no-repeat");
 							$("#popupImgContainer").css("background-size", "cover");
 							$("#popupImgContainer").css("cursor", "pointer");
-							$("#popupImgContainer").css("height", "auto");
+							//$("#popupImgContainer").css("height", "auto");
 							$("#popupImgContainer").css("margin-top", 0);
 							$("#popupImgContainer").css("margin-left", 0);
 
@@ -580,6 +580,14 @@ define(["../../core/Helper",
 								 // Calculate border radius with respect to width
 								var bRadius = 0.01786 * $(window).width();
 								$("#popupImg").css("border-radius", bRadius);
+
+								// Calculate the top margin to center the image
+								var divHeight = (1125/1434)*$(window).width();
+								var mTop = ($(window).height() - divHeight)/2;
+								$("#popupImgContainer").css("margin-top", mTop);
+
+	 							// Show the popup image
+								$("#popupImgContainer").css("display", "block");
 							}else{
 								// Landscape Mode
 
@@ -590,10 +598,15 @@ define(["../../core/Helper",
 								 // Calculate border radius with respect to height
 								var bRadius = 0.02276 * $(window).height();
 								$("#popupImg").css("border-radius", bRadius);
-							}
 
- 							// Show the popup image
-							$("#popupImgContainer").css("display", "block");
+								// Calculate the left margin to center the image
+								var divWidth = (1434/1125)*$(window).height();
+								var mLeft = ($(window).width() - divWidth)/2;
+								$("#popupImgContainer").css("margin-left", mLeft);
+
+	 							// Show the popup image
+								$("#popupImgContainer").css("display", "block");
+							}
 
 							// Add ability to hide image
 							$("#popupImgContainer").click(function(){
