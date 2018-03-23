@@ -544,8 +544,6 @@ define(["../../core/Helper",
 						// MOBILE
 
 						$(newSlide).find(".detailPictureDiv img").click(function(){
-							//console.log(themeIndex);
-							//console.log(_swipers);
 							// Show a popup of an enlarged version of the image when the image is clicked
 
 							var currentIndex = _swipers[themeIndex].activeIndex;
@@ -1064,10 +1062,9 @@ define(["../../core/Helper",
 
 			function hidePopupImage()
 			{
-				// Unlock swipes when the image disappears
-				_swipers[$('.entry.active').index()].unlockSwipes();
-				$("#popupImgContainer").css("display", "none");
-				$("#popupImgContainer").css("cursor", "default");
+				_swipers[$('.entry.active').index()].unlockSwipes(); // Unlock swipes when the image disappears
+				$("#popupImgContainer").css("display", "none"); // Hide the popup image
+				$("#popupImgContainer").css("cursor", "default"); // Change the cursor back to default
 			}
 
 			function initEvents()
