@@ -79,6 +79,7 @@ define(["../../core/Helper",
 						_iOSSwiper.init();
 						_slideContainersLoaded = true;
 						container.find(".detailClose").click(function(){
+							hidePopupImage();
 							container.find(".detailContainer").hide();
 							if(app.ui.mobileIntro.screenSize == 'small')
 								app.ui.mobileFeatureList.showMobileList();
@@ -86,6 +87,7 @@ define(["../../core/Helper",
 						});
 
 						container.find($(".detail-btn-left")[0]).click(function(){
+							hidePopupImage();
 							var features = app.layerCurrent.graphics;
 							var nextFeature = null;
 							var mapFeatures = [];
@@ -110,6 +112,7 @@ define(["../../core/Helper",
 						});
 
 						container.find($(".detail-btn-right")[0]).click(function(){
+							hidePopupImage();
 							var features = app.layerCurrent.graphics;
 							var nextFeature = null;
 							var mapFeatures = [];
@@ -534,19 +537,15 @@ define(["../../core/Helper",
 							$("#popupImgContainer").css("display", "block");
 
 							// Add ability to hide image
-							$("#popupImgContainer").click(function(){
-								$("#popupImgContainer").css("display", "none");
-								$("#popupImgContainer").css("cursor", "default");
-							});
-							$("#popupImg").click(function(){
-								$("#popupImgContainer").css("display", "none");
-								$("#popupImgContainer").css("cursor", "default");
-							});
+							$("#popupImgContainer").click(hidePopupImage);
+							$("#popupImg").click(hidePopupImage);
 						});
 					}else{
 						// MOBILE
 
 						$(newSlide).find(".detailPictureDiv img").click(function(){
+							//console.log(themeIndex);
+							//console.log(_swipers);
 							// Show a popup of an enlarged version of the image when the image is clicked
 
 							var currentIndex = _swipers[themeIndex].activeIndex;
@@ -607,15 +606,12 @@ define(["../../core/Helper",
 								$("#popupImgContainer").css("display", "block");
 							}
 
+							// Lock swipes when the image is visible
+							_swipers[themeIndex].lockSwipes();
+
 							// Add ability to hide image
-							$("#popupImgContainer").click(function(){
-								$("#popupImgContainer").css("display", "none");
-								$("#popupImgContainer").css("cursor", "default");
-							});
-							$("#popupImg").click(function(){
-								$("#popupImgContainer").css("display", "none");
-								$("#popupImgContainer").css("cursor", "default");
-							});
+							$("#popupImgContainer").click(hidePopupImage);
+							$("#popupImg").click(hidePopupImage);
 						});
 					}
 
@@ -716,6 +712,7 @@ define(["../../core/Helper",
 						});
 
 						container.find(".detailClose").click(function(){
+							hidePopupImage();
 							container.find(".detailContainer").hide();
 							if(app.ui.mobileIntro.screenSize == 'small')
 								app.ui.mobileFeatureList.showMobileList();
@@ -726,6 +723,7 @@ define(["../../core/Helper",
 						var isWin10 = navigator.userAgent.indexOf('Windows NT 10.0') > 0 ? true : false;
 
 						container.find($(".detail-btn-left")[themeIndex]).click(function(){
+							hidePopupImage();
 							if(!_mainView.selected){
 								var nextSlideId = _swipers[themeIndex].activeIndex - 1;
 								if(_swipers[themeIndex].activeIndex === 0){
@@ -755,6 +753,7 @@ define(["../../core/Helper",
 						});
 
 						container.find($(".detail-btn-right")[themeIndex]).click(function(){
+							hidePopupImage();
 							if(!_mainView.selected){
 								var nextSlideId = _swipers[themeIndex].activeIndex + 1;
 								if(_swipers[themeIndex].activeIndex === _swipers[themeIndex].slides.length - 1){
@@ -1061,6 +1060,14 @@ define(["../../core/Helper",
 			function initBuilder()
 			{
 				container.find(".userInput").attr("contenteditable", "true");
+			}
+
+			function hidePopupImage()
+			{
+				// Unlock swipes when the image disappears
+				_swipers[$('.entry.active').index()].unlockSwipes();
+				$("#popupImgContainer").css("display", "none");
+				$("#popupImgContainer").css("cursor", "default");
 			}
 
 			function initEvents()
