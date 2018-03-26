@@ -210,7 +210,7 @@ define(["../../core/Helper",
             container.find('#detailView0').append(detailSlide());
             var currentDetailContainer = $('.detailContainer')[0];
             var newSlide = $(currentDetailContainer).find('.swiper-slide')[0];
-            $(newSlide).addClass('swiper-no-swiping');
+            $(newSlide).addClass('swiper-no-swiping'); // vince: disable?
             var atts = app.ui.mainView.selected.attributes;
 
             var name = atts[$.grep(Object.keys(atts), function(n) {return n.toLowerCase() == 'name';})[0]];
@@ -543,6 +543,8 @@ define(["../../core/Helper",
                   });
                }else{
                   // MOBILE
+
+                  console.log("mobile case detected");
 
                   $(newSlide).find(".detailPictureDiv img").click(function(){
                      // Show a popup of an enlarged version of the image when the image is clicked
@@ -1063,7 +1065,8 @@ define(["../../core/Helper",
 
          function hidePopupImage()
          {
-            _swipers[$('.entry.active').index()].unlockSwipes(); // Unlock swipes when the image disappears
+         	if (_swipers[$('.entry.active').index()])
+            	_swipers[$('.entry.active').index()].unlockSwipes(); // Unlock swipes when the image disappears
             $("#popupImgContainer").css("display", "none"); // Hide the popup image
             $("#popupImgContainer").css("cursor", "default"); // Change the cursor back to default
          }
