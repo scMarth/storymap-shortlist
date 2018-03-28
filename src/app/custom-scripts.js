@@ -70,7 +70,6 @@ define(["dojo/topic"], function(topic) {
                //console.log(e.keyCode);
             }
          }
-
       }
    });
 });

@@ -350,7 +350,7 @@ define(["../../core/Helper",
 
             $(newSlide).find(".detailPictureDiv img").click(function(){
 		         // Show a popup of the image with the new url
-		         showPopupImageMobile(currentImageUrl);
+		         showPopupImage(currentImageUrl);
             });
          };
 
@@ -529,7 +529,7 @@ define(["../../core/Helper",
                      var currentImageUrl = $($(_swipers[themeIndex].slides[currentIndex]).find(".detailPictureDiv img")[0]).attr("src");
 
                      // Show a popup of the image with the url
-                     showPopupImageDesktop(currentImageUrl);
+                     showPopupImage(currentImageUrl);
                   });
                }else{
                   // MOBILE
@@ -546,7 +546,7 @@ define(["../../core/Helper",
                      currentImageUrl += "w1434.jpg";
 
                      // Show a popup of the image with the new url
-                     showPopupImageMobile(currentImageUrl);
+                     showPopupImage(currentImageUrl);
 
                      // Lock swipes when the image is visible
                      _swipers[themeIndex].lockSwipes();
@@ -1009,52 +1009,58 @@ define(["../../core/Helper",
          }
 
          // Display an enlarged popup of the image at the url 'currentImageUrl' (MOBILE)
-         function showPopupImageMobile(currentImageUrl)
+         function showPopupImage(currentImageUrl)
          {
             $("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
 
             // Set CSS properties
-            $("#popupImgContainer").css("background-attachment", "fixed");
-            $("#popupImgContainer").css("background-position", "center");
-            $("#popupImgContainer").css("background-repeat", "no-repeat");
-            $("#popupImgContainer").css("background-size", "cover");
+            $("#popupImg").css("background-attachment", "fixed");
+            $("#popupImg").css("background-position", "center");
+            $("#popupImg").css("background-repeat", "no-repeat");
+            $("#popupImg").css("background-size", "cover");
             $("#popupImgContainer").css("cursor", "pointer");
-            $("#popupImgContainer").css("margin-top", 0);
-            $("#popupImgContainer").css("margin-left", 0);
+            var paddingPercentage = 0.02;
+            var maxHW = 1 - (2*paddingPercentage);
+            $("#popupImgContainer").css("width", $(window).width());
+            $("#popupImgContainer").css("height", $(window).height());
+            $("#popupImgContainer").css("background-color", "rgba(0,0,0,0.8");
+            $("#popupImgContainer").css("z-index", 100);
+            $("#popupImgContainer").css("margin", 0);
+            $("#popupImgContainer").css("position", "absolute");
 
             if ($(window).height() > $(window).width()){
                // Portrait Mode
                
-               $("#popupImgContainer").css("width", $(window).width());
+               $("#popupImg").css("margin-left", ($(window).width()*paddingPercentage));
+               $("#popupImg").css("width", ($(window).width() * maxHW));
                $("#popupImg").css("height", "auto");
-               $("#popupImg").css("width", "100%");
 
-                // Calculate border radius with respect to width
-               var bRadius = 0.01786 * $(window).width();
+               // Calculate border radius with respect to width
+               var bRadius = 0.01786 * $(window).width() * maxHW;
                $("#popupImg").css("border-radius", bRadius);
 
                // Calculate the top margin to center the image
-               var divHeight = (1125/1434)*$(window).width();
+               var divHeight = (1125/1434)*($(window).width() * maxHW);
                var mTop = ($(window).height() - divHeight)/2;
-               $("#popupImgContainer").css("margin-top", mTop);
+               $("#popupImg").css("margin-top", mTop);
 
                // Show the popup image
                $("#popupImgContainer").css("display", "block");
             }else{
                // Landscape Mode
 
-               $("#popupImgContainer").css("height", $(window).height());
+               $("#popupImg").css("margin-top", ($(window).height()*paddingPercentage));
+               $("#popupImg").css("height", ($(window).height() * maxHW));
                $("#popupImg").css("width", "auto");
-               $("#popupImg").css("height", "100%");
 
                 // Calculate border radius with respect to height
-               var bRadius = 0.02276 * $(window).height();
+               var bRadius = 0.02276 * $(window).height() * maxHW;
                $("#popupImg").css("border-radius", bRadius);
 
                // Calculate the left margin to center the image
-               var divWidth = (1434/1125)*$(window).height();
+               var divWidth = (1434/1125)*($(window).height() * maxHW);
                var mLeft = ($(window).width() - divWidth)/2;
-               $("#popupImgContainer").css("margin-left", mLeft);
+               $("#popupImg").css("margin-left", mLeft);
 
                // Show the popup image
                $("#popupImgContainer").css("display", "block");
@@ -1062,32 +1068,6 @@ define(["../../core/Helper",
 
             // Add ability to hide image
             $("#popupImgContainer").click(hidePopupImage); // redundant to do this always?
-            $("#popupImg").click(hidePopupImage);
-         }
-
-         // Display an enlarged popup of the image at the url 'currentImageUrl' (DESKTOP)
-         function showPopupImageDesktop(currentImageUrl)
-         {
-				$("#popupImg").attr("src", currentImageUrl);  // Set the image popup to display the current image
-
-            // Set CSS properties
-            $("#popupImgContainer").css("background-attachment", "fixed");
-            $("#popupImgContainer").css("background-position", "center");
-            $("#popupImgContainer").css("background-repeat", "no-repeat");
-            $("#popupImgContainer").css("background-size", "cover");
-            $("#popupImgContainer").css("cursor", "pointer");
-            $("#popupImgContainer").css("width", "auto");
-            $("#popupImgContainer").css("height", ($(window).height() * 0.9));
-            $("#popupImgContainer").css("margin-top", ($(window).height() * 0.05));
-            $("#popupImgContainer").css("margin-left", ($(window).width() * 0.05));
-            var bRadius = 0.0205 * $(window).height(); // Calculate border radius
-            $("#popupImg").css("border-radius", bRadius);
-
-             // Show the popup image
-            $("#popupImgContainer").css("display", "block");
-
-            // Add ability to hide image
-            $("#popupImgContainer").click(hidePopupImage);  // redundant to do this always?
             $("#popupImg").click(hidePopupImage);
          }
 
