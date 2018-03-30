@@ -9,10 +9,10 @@ define(["dojo/topic"], function(topic) {
       * Custom Javascript to be executed when the application is ready goes here
       */
 
-
       /*****************************************************************
       * Keyboard Navigation
       *****************************************************************/
+
       document.onkeydown = processKey;
 
       function detailBtnsVisible(){
@@ -39,36 +39,37 @@ define(["dojo/topic"], function(topic) {
          var themeIndex = $('.entry.active').index();
 
          if (e.keyCode == '38') {
-            // up arrow
+            // Up Arrow
             return;
          }
          else if (e.keyCode == '40') {
-            // down arrow
+            // Down Arrow
             return;
          }
          else if (e.keyCode == '37') {
-            // left arrow
+            // Left Arrow
+
             if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-left')[themeIndex]).click();
             }else return;
          }
          else if (e.keyCode == '39') {
-            // right arrow
+            // Right Arrow
+
             if (detailBtnsVisible()){
                $('#paneLeft > div.detailContainer').find($('.detail-btn-right')[themeIndex]).click();
             } else return;
          }else if (e.keyCode == '27'){
-            // escape key
+            // Escape Key
+
             if (detailBtnsVisible()){
                $('button.detailClose').click();
             } else return;
          }else{
-            // else
             if (detailBtnsVisible()){
                //console.log(e.keyCode);
             }
          }
-
       }
    });
 });
