@@ -71,6 +71,14 @@ define(["dojo/topic"], function(topic) {
             }
          }
       }
+
+      /*****************************************************************
+      * Legend
+      *****************************************************************/
+
+      // Hide legend unless it's Desktop
+      if (app.ui.mobileIntro.screenSize != "desktop")
+         $('#legendOverlay').css('display', 'none');
      
       /*****************************************************************
       * Overview Tab Doesn't show Location Markers
