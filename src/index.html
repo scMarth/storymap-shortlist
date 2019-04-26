@@ -75,7 +75,17 @@
 			/* CUSTOM CSS RULES */
 			li.entry.visible.active a.entryLbl {
 				/* Uncomment for light blue tab colors */
-				/*background-color: #a3bcdd !important;*/
+				background-color: #a3bcdd !important;
+			}
+
+			/* Legend */
+			#legendOverlay {
+				position: absolute;
+				top: 152px;
+				right: 10px;
+				background-image: url('./resources/images/DCSLegend.png');
+				height: 288px;
+				width: 207px;
 			}
 
 		</style>
@@ -277,6 +287,7 @@
 				</tr>
 			</table>
 		</div>
+		<div id="legendOverlay"></div>
 
 		<script type="text/javascript" src="app/main-config.js"></script>
 

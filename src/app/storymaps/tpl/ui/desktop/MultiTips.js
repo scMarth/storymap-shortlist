@@ -251,6 +251,11 @@ define(["dojo/dom-style",
 
 			function displayTip(scrPt, i, settings)
 			{
+				// do not display tip if we are currently on an unmapped tab
+				curr_tab_id = app.layerCurrent.graphics[0].attributes.tab_id;
+				if (app.cfg.UNMAPPED_TABS.includes(curr_tab_id))
+					return;
+
 				if(!(dom.byId('multiTip' + i)))
 					return;
 				if( scrPt.x > settings.mapAuthorizedWidth || scrPt.y > settings.mapAuthorizedHeight ) {
