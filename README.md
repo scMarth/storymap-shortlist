@@ -19,6 +19,8 @@ Story Map Shortlist
 
 - **Unique Tab Colors** - (can be toggled) When this is enabled, each tab's background-color is set to the same color as its location markers. There is a custom style rule in `src/index.html` where the tab colors can be controlled.
 
+- **Left Panel Background Image** - (can be toggled) Adds a background image to the left panel. Can be toggled by commenting/uncommenting `<div id="legendOverlay"></div>` and `#paneLeft, .swiper-slide-active, .swiper-slide` custom style rules in `src/index.html`
+
 ## Description
 
 The Story Map Shortlist app lets you organize points of interest into tabs that make it fun for users to explore what's in an area. Your users can click on the places either in the tabs or on the map to find out about them. The tabs automatically update as users navigate around the map to show them what's interesting in their current map extent.
