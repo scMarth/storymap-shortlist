@@ -1,7 +1,7 @@
 Story Map Shortlist
 ================
 
-## Features by scMarth:
+## Features by scMarth
 
 - **Arrow Key Navigation** - (on by default) When viewing a slide, you can use the left and right arrow key to move to adjacent slides. Then, you can exit a slide by pressing the Escape key.
 
