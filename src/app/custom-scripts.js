@@ -79,23 +79,35 @@ define(["dojo/topic"], function(topic) {
       // Hide legend unless it's Desktop
       if (app.ui.mobileIntro.screenSize != "desktop")
          $('#legendOverlay').css('display', 'none');
-     
+
       /*****************************************************************
-      * Overview Tab Doesn't show Location Markers
+      * Style unmapped tabs
       *****************************************************************/
      
       var slLayer = app.map.getLayer(app.data.getShortlistLayerId());
+      unmappedTabs = [3] // list of tab IDs to hide, indexed from 0, starting with the left-most tab
 
-      // Hide the first tab's location markers
-      function hideFirstTabLocationMarkers(){
+      function getCurrentTabId(){
+         return app.layerCurrent.graphics[0].attributes.tab_id;
+      }
+
+      // Returns whether or not a tab in 'unmappedTabs' is selected
+      function unmappedTabSelected(){
+         return (unmappedTabs.includes(getCurrentTabId()) ? true : false);
+      }
+
+      // Hide the location markers on tabs listed in 'unmappedTabs'
+      function hideLocationMarkers(){
          for (var i=0; i<slLayer.graphics.length; i++){
-            if (slLayer.graphics[i].attributes.tab_id == 0)
+            if (unmappedTabs.includes(slLayer.graphics[i].attributes.tab_id))
                slLayer.graphics[i].hide();
          }
       }
 
       // Hide the number divs in the current tab
       function hideCurrentTabNumbers(){
+         console.log(getCurrentTabId());
+         console.log("Hiding numbers");
          // Desktop
          $('#myList.tilelist > li > div.footer > div.num').css('display', 'none');
          $('#myList.tilelist > li > div.footer').css('padding-right', '14px');
@@ -110,6 +122,8 @@ define(["dojo/topic"], function(topic) {
 
       // Show the number divs in the current tab
       function showCurrentTabNumbers(){
+         console.log(getCurrentTabId());
+         console.log("Showing numbers");
          // Desktop
          $('#myList.tilelist > li > div.footer > div.num').css('display', 'block');
          $('#myList.tilelist > li > div.footer').css('padding-right', '0px');
@@ -122,79 +136,45 @@ define(["dojo/topic"], function(topic) {
          $('#mobileList > li > div.footer > div.num').css('display', 'block');
       }
 
-      // (DESKTOP) Returns whether or not the Overview tab is selected
-      function overviewTabSelected(){
-         if ($('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1)').hasClass('active'))
-            return true;
-         else
-            return false;
+      // Styles tabs in 'unmappedTabs' (hides numbers, hides location markers)
+      function styleTabIfUnmapped(){
+         if (unmappedTabSelected()){
+            hideLocationMarkers();
+            hideCurrentTabNumbers();
+         }else{
+            showCurrentTabNumbers();
+         }
       }
 
-      // Styles the first tab as an Overview tab (hides numbers, hides location markers)
-      function firstTabToOverview(){
-         hideFirstTabLocationMarkers();
-         hideCurrentTabNumbers();
-      }
-
-      // Attatch Overview tab styling to map's update-end event
+      // Attatch unmapped tab styling to map's update-end event
       if (slLayer.updating)
-         slLayer.on("update-end", firstTabToOverview);
+         slLayer.on("update-end", styleTabIfUnmapped);
       else
-         firstTabToOverview();
+         styleTabIfUnmapped();
 
-      // (DESKTOP) Everytime the Overview tab is clicked, hide the location markers
+      // (DESKTOP) Everytime an unmapped tab is clicked, hide the location markers
       $('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs').click(function(event) {
-         if ($(event.target).is('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1)'))
-            firstTabToOverview();
-         else if ($(event.target).is('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > .entry:nth-child(1) > .entryLbl'))
-            firstTabToOverview();
-         else
-            showCurrentTabNumbers();
+         styleTabIfUnmapped();
       });
 
-      // (DESKTOP) Everytime an entry is clicked on the overview tab, hide the numbers
+      // (DESKTOP) Everytime an entry is clicked on an unmapped tab, hide the numbers
       $('#myList').click(function(event) {
-         if (overviewTabSelected()){
-            hideCurrentTabNumbers();
-         }else{
-            showCurrentTabNumbers();
-         }
+         styleTabIfUnmapped();
       });
 
-      // (MOBILE) Returns whether or not the Overview tab is selected
-      function mobileOverviewTabSelected(){
-         if ($('#mobileThemeBarSlider > div.mobileThemeTitle.swiper-slide.swiper-slide-active > p')[0].innerHTML == "Overview")
-            return true;
-         else
-            return false;
-      }
-
-      // (MOBILE) Everytime an entry is clicked on the overview tab, hide the numbers
+      // (MOBILE) Everytime an entry is clicked on an unmapped tab, hide the numbers
       $('#mobileList').click(function(event) {
-         if (mobileOverviewTabSelected()){
-            hideCurrentTabNumbers();
-         }else{
-            showCurrentTabNumbers();
-         }
+         styleTabIfUnmapped();
       });
 
       // (MOBILE) Hide / show numbers based on which item is selected in the mobile intro
       $('#mobileThemeList').click(function(event) {
-         if ($(event.target).is('#mobileThemeList > li.mobileTitleThemes:nth-child(1)'))
-            hideCurrentTabNumbers();
-         else if ($(event.target).is('#mobileThemeList > li.mobileTitleThemes:nth-child(1) > span'))
-            hideCurrentTabNumbers();
-         else
-            showCurrentTabNumbers();
+         styleTabIfUnmapped();
       });
 
-      // (MOBILE) Everytime the Overview tab is navigated to, hide the location markers and numbers
+      // (MOBILE) Everytime an unmapped tab is navigated to, hide the location markers and numbers
       $('#mobileThemeBar').click(function(event) {
-         if (mobileOverviewTabSelected()){
-            firstTabToOverview();
-         }else{
-            showCurrentTabNumbers();
-         }
+         styleTabIfUnmapped();
       });
 
    });
