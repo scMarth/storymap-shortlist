@@ -205,17 +205,11 @@
 }
 
 .detailPictureDiv img{
-	max-width: none !important;
-	max-height: none !important;
-
 	width: 100%;
 	height: auto;
 	margin: auto;
 	cursor: pointer;
-	border-radius: 7px !important;
-	/*padding-left: 5px;
-	padding-right: 5px;*/
-	/*max-height: 298px;*/
+	/*border-radius: 10px !important;*/
 }
 
 .detailTextContainer {
