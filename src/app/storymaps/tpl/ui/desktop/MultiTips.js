@@ -251,7 +251,10 @@ define(["dojo/dom-style",
 
 			function displayTip(scrPt, i, settings)
 			{
-				if ($('#nav-bar > div.nav-bar.isTab > div.entries > ul.nav.nav-tabs > li.entry:nth-child(1)').hasClass('active')) return;
+				// do not display tip if we are currently on an unmapped tab
+				curr_tab_id = app.layerCurrent.graphics[0].attributes.tab_id;
+				if (app.cfg.UNMAPPED_TABS.includes(curr_tab_id))
+					return;
 
 				if(!(dom.byId('multiTip' + i)))
 					return;

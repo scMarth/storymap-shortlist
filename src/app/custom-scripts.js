@@ -85,7 +85,7 @@ define(["dojo/topic"], function(topic) {
       *****************************************************************/
      
       var slLayer = app.map.getLayer(app.data.getShortlistLayerId());
-      unmappedTabs = [3] // list of tab IDs to hide, indexed from 0, starting with the left-most tab
+      app.cfg.UNMAPPED_TABS = [3]; // list of tab IDs to hide, indexed from 0, starting with the left-most tab
 
       function getCurrentTabId(){
          return app.layerCurrent.graphics[0].attributes.tab_id;
@@ -93,21 +93,19 @@ define(["dojo/topic"], function(topic) {
 
       // Returns whether or not a tab in 'unmappedTabs' is selected
       function unmappedTabSelected(){
-         return (unmappedTabs.includes(getCurrentTabId()) ? true : false);
+         return (app.cfg.UNMAPPED_TABS.includes(getCurrentTabId()) ? true : false);
       }
 
       // Hide the location markers on tabs listed in 'unmappedTabs'
       function hideLocationMarkers(){
          for (var i=0; i<slLayer.graphics.length; i++){
-            if (unmappedTabs.includes(slLayer.graphics[i].attributes.tab_id))
+            if (app.cfg.UNMAPPED_TABS.includes(slLayer.graphics[i].attributes.tab_id))
                slLayer.graphics[i].hide();
          }
       }
 
       // Hide the number divs in the current tab
       function hideCurrentTabNumbers(){
-         console.log(getCurrentTabId());
-         console.log("Hiding numbers");
          // Desktop
          $('#myList.tilelist > li > div.footer > div.num').css('display', 'none');
          $('#myList.tilelist > li > div.footer').css('padding-right', '14px');
@@ -122,8 +120,6 @@ define(["dojo/topic"], function(topic) {
 
       // Show the number divs in the current tab
       function showCurrentTabNumbers(){
-         console.log(getCurrentTabId());
-         console.log("Showing numbers");
          // Desktop
          $('#myList.tilelist > li > div.footer > div.num').css('display', 'block');
          $('#myList.tilelist > li > div.footer').css('padding-right', '0px');
