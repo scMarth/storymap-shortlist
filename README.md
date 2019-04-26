@@ -1,6 +1,26 @@
 Story Map Shortlist
 ================
 
+## Features by scMarth:
+
+- **Arrow Key Navigation** - (on by default) When viewing a slide, you can use the left and right arrow key to move to adjacent slides. Then, you can exit a slide by pressing the Escape key.
+
+- **Image Popups** - (on by default) When viewing a slide, you can click the image to get an enlarged version of the image to popup. The popup is dismissed by clicking anywhere on the screen.
+
+- **Legend** - (can be toggled) This is a simple image that is overlayed on the top right corner of the storymap. The legend is only displayed in desktop view. It can be toggled on and of by simply commenting/uncommenting the following:
+  - The `#legendOverlay` style rule in `src/index.html`
+  - The `<div id="legendOverlay"></div>` element in `src/index.html`
+  - The code under the 'Legend' section in `src\app\custom-scripts.js`
+  
+- **Unmapped Tabs** - (can be toggled) This feature is working on desktop and mobile. In `src\app\custom-scripts.js`, the variable `app.cfg.UNMAPPED_TABS` is defined. It is a list of integers, with each integer indexing tabs on the storymap. Tabs are indexed from the left-most tab, and start at index 0. By adding indeces to this list, you can define 'unmapped tabs,' which have the following properties:
+  - Unmapped tabs are un-numbered
+  - Unmapped tabs do not have location markers
+  - When a panel is hovered over with the mouse cursor, no tooltip is displayed
+
+- **Unique Tab Colors** - (can be toggled) When this is enabled, each tab's background-color is set to the same color as its location markers. There is a custom style rule in `src/index.html` where the tab colors can be controlled.
+
+## Description
+
 The Story Map Shortlist app lets you organize points of interest into tabs that make it fun for users to explore what's in an area. Your users can click on the places either in the tabs or on the map to find out about them. The tabs automatically update as users navigate around the map to show them what's interesting in their current map extent.
 
 ![App](storytelling-shortlist-template-js.jpg)
