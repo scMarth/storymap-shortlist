@@ -85,7 +85,7 @@ define(["dojo/topic"], function(topic) {
       *****************************************************************/
      
       var slLayer = app.map.getLayer(app.data.getShortlistLayerId());
-      app.cfg.UNMAPPED_TABS = [3]; // list of tab IDs to hide, indexed from 0, starting with the left-most tab
+      app.cfg.UNMAPPED_TABS = [6]; // list of tab IDs to hide, indexed from 0, starting with the left-most tab
 
       function getCurrentTabId(){
          return app.layerCurrent.graphics[0].attributes.tab_id;
